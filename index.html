@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>NEW AVIA LOGISTIC 
-</title>
+  <title>NEW AVIA LOGISTIC
+  </title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -37,7 +37,7 @@
         <ul>
           <li><a href="index.html" class="active">Главная<br></a></li>
           <li><a href="about.html">О нас</a></li>
-          
+
           <li><a href="contact.html">Контакты</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -50,7 +50,6 @@
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
-
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg" data-aos="fade-in">
 
       <div class="container">
@@ -61,21 +60,20 @@
               от того, сколько времени занимает доставка, мы гарантируем, что ваш товар будет доставлен вовремя и с
               минимальными затратами. С нами вы получаете качественное обслуживание и уверенность в результате.</p>
 
-            <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
-              data-aos-delay="200">
-              <input type="text" class="form-control" placeholder="Номер отслеживания">
+            <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200"
+              id="searchForm">
+              <input type="text" class="form-control" placeholder="Номер отслеживания" id="trackingInput">
               <button type="submit" class="btn btn-primary">Найти</button>
             </form>
 
             <div class="row gy-4" data-aos="fade-up" data-aos-delay="300">
-
               <div class="col-lg-3 col-6">
                 <div class="stats-item text-center w-100 h-100">
                   <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="0"
                     class="purecounter">232</span>
                   <p>Клиентов</p>
                 </div>
-              </div><!-- End Stats Item -->
+              </div>
 
               <div class="col-lg-3 col-6">
                 <div class="stats-item text-center w-100 h-100">
@@ -83,7 +81,7 @@
                     class="purecounter">521</span>
                   <p>Проектов</p>
                 </div>
-              </div><!-- End Stats Item -->
+              </div>
 
               <div class="col-lg-3 col-6">
                 <div class="stats-item text-center w-100 h-100">
@@ -91,7 +89,7 @@
                     class="purecounter">1453</span>
                   <p>Поддержка</p>
                 </div>
-              </div><!-- End Stats Item -->
+              </div>
 
               <div class="col-lg-3 col-6">
                 <div class="stats-item text-center w-100 h-100">
@@ -99,7 +97,7 @@
                     class="purecounter">32</span>
                   <p>Сотрудников</p>
                 </div>
-              </div><!-- End Stats Item -->
+              </div>
 
             </div>
 
@@ -112,7 +110,51 @@
         </div>
       </div>
 
+      <div class="modal fade" id="trackingModal" tabindex="-1" aria-labelledby="trackingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="trackingModalLabel">Информация о доставке</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Данные по отслеживанию вашего груза:</p>
+              <p>Номер отслеживания: <span id="tracking-number"></span></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
+
+
+    <script>
+      const searchForm = document.getElementById('searchForm');
+      const trackingInput = document.getElementById('trackingInput');
+      const trackingNumber = document.getElementById('tracking-number');
+
+      searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const trackingValue = trackingInput.value.trim();
+
+        if (trackingValue === "") {
+          alert("Пожалуйста, введите номер отслеживания.");
+          return;
+        }
+
+        trackingNumber.textContent = trackingValue;
+
+        var myModal = new bootstrap.Modal(document.getElementById('trackingModal'), {
+          keyboard: false
+        });
+        myModal.show();
+      });
+    </script>
+
 
     <section id="featured-services" class="featured-services section">
 
