@@ -2000,3 +2000,8 @@ section,
 ::-webkit-scrollbar {
   width: 1px;
 }
+
+#trackingModal .modal-body p {
+  color: #333;
+  /* Темный цвет текста */
+}
